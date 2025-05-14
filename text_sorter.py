@@ -126,7 +126,7 @@ class AlphabeticStrategy(SortStrategy[str]):
         result = self.compare_mode.compare(str1, str2)
         return -result if self.reverse else result
 
-class SentenceTokenizer():
+class SentenceTokenizer:
     def __init__(self, source_text_path=None):
         if source_text_path != None:
             self.text = self._load_text_file(source_text_path)
@@ -176,14 +176,12 @@ class SentenceTokenizer():
 
 if __name__ == "__main__":
     source_text_path = "ShortStory.txt"
-    #sent_tokenizer = SentenceTokenizer(source_text_path)
-    sent_tokenizer = SentenceTokenizer()
+    sent_tokenizer = SentenceTokenizer(source_text_path)
     raw_sents = sent_tokenizer.tokenize()
 
     custom_sorter = CompositeSorter[str]()
 
     custom_sorter.add_strategy(AlphabeticStrategy(AlphabeticStrategy.StandardModes.CASE_PRIORITY))
-    #custom_sorter.add_strategy(AlphabeticStrategy(AlphabeticStrategy.StandardModes.CASE_SENSITIVE))
 
     """
     Below are examples of different strategy uses for customizing the alphabetical sorting properties, they can be chained together to break ties 
