@@ -96,6 +96,20 @@ def test_mode_case_priority_explicit_lowercase_first_true():
     expected = ["apple", "Apple", "banana", "Banana"]
     assert sorter.sort(unsorted) == expected
 
+# Explicit CASE_PRIORITY with lowercase_first=False (AaBbCc)
+def test_mode_case_priority_explicit_lowercase_first_false():
+    sorter = create_sorter_with_strategy(AlphabeticStrategy(CasePriorityMode(lowercase_first=False)))
+    unsorted = ["Banana", "banana", "Apple", "apple"]
+    expected = ["Apple", "apple", "Banana", "banana"]
+    assert sorter.sort(unsorted) == expected
+
+# Letters first sorting, tie break with CASE_PRIORITY with lowercase_first=True (aAbBcC)
+def test_mode_case_priority_letter_priority_overcase():
+    sorter = create_sorter_with_strategy(AlphabeticStrategy(CasePriorityMode(lowercase_first=True)))
+    unsorted = ["Banana", "banana", "Apple", "apple", "absolute", "Ask", "asked"]
+    expected = ["absolute", "apple", "Apple", "Ask", "asked", "banana", "Banana"]
+    assert sorter.sort(unsorted) == expected
+
 def test_option_reverse_case_sensitive():
     sorter = create_sorter_with_strategy(
         AlphabeticStrategy.StandardModes.CASE_SENSITIVE,

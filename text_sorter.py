@@ -61,7 +61,8 @@ class StringCompareMode(ABC):
         pass
 
 class CasePriorityMode(StringCompareMode):
-    # Sorts letters together by case sensitivity, priority given depending on lowercase_first value
+    # Sorts by characters first, tie breaks with case sensitivity, grouping capital and lowercase letters
+    # priority given depending on lowercase_first value = True or False
     def __init__(self, lowercase_first: bool = True):
         self.lowercase_first = lowercase_first
     
