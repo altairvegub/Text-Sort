@@ -187,7 +187,7 @@ if __name__ == "__main__":
     Below are examples of different strategy uses for customizing the alphabetical sorting properties, they can be chained together to break ties 
     """
 
-    # Lowercase letters grouped are their capital counter parts 
+    # Lowercase letters are grouped under their capital counter parts 
     #custom_sorter.add_strategy(AlphabeticStrategy(CasePriorityMode(lowercase_first=False))) 
 
     # Case priority groups same letters together, quotes are grouped together
